@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layout');
-});
+// Route::get('/', function () {
+//     return view('layout');
+// });
+
+Route::get('/', 'HomeController@index');
 
 Route::get('about', 'AboutController@display');
 Route::get('contact', 'ContactController@display');
@@ -23,3 +25,6 @@ Route::post('customers',['uses' => 'CustomerController@store']);
 Route::get('customers/{customer}/edit',['uses' => 'CustomerController@edit'])-> name('customers.edit');
 Route::patch('customers/{customer}',['uses' => 'CustomerController@update']);
 Route::get('customers/{customer}',['uses' => 'CustomerController@destroy'])->name('customers.destroy');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
